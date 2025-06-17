@@ -1,30 +1,133 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Professional Profile</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sai Pranay Gundu – Professional Profile</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-…"
+    crossorigin="anonymous"
+  >
+  <!-- Optional Bootstrap theme -->
+  <link href="https://www.w3schools.com/bootstrap4/theme/default.css" rel="stylesheet">
 </head>
 <body>
-  <div class="container mt-4">
-    <h1>Sai Pranay Gundu</h1>
-    <img src="headshot.jpg" alt="My Photo" width="150" height="150">
-    <p>Email: gundus1@udayton.edu</p>
-    <p>Education: MS in Cybersecurity, University of Dayton</p>
-    <p>Skills: HTML, CSS, JS, PHP, Ethical Hacking</p>
-    <a href="waph.html">View WAPH Course Info</a>
-    <div id="welcome-msg"></div>
-    <div id="digit-clock"></div>
-    <canvas id="analog-clock" width="150" height="150" style="background-color:#999;"></canvas>
-    <div id="email" onclick="toggleEmail()">Click to show email</div>
-    <div id="joke"></div>
-    <div id="comic"></div>
-  </div>
 
-  <script src="https://waph-phung.github.io/clock.js"></script>
-  <script src="email.js"></script>
-  <script src="scripts.js"></script>
+  <!-- Header -->
+  <header class="bg-light py-3 mb-4">
+    <div class="container d-flex align-items-center">
+      <img src="headshot.jpg" alt="Headshot" class="rounded-circle me-3" width="150" height="150">
+      <div>
+        <h1 class="h2 mb-0">Sai Pranay Gundu</h1>
+        <p class="text-muted">MSc Cybersecurity | Web App Dev &amp; Security</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="course.html">WAPH Course</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Contact Section -->
+    <section id="contact" class="mb-5">
+      <h2>Contact</h2>
+      <p>
+        Email: 
+        <span id="email" style="display:none">gundus1@udayton.edu</span>
+        <button id="toggle-email" class="btn btn-sm btn-outline-primary">Show Email</button>
+      </p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank">Profile</a></p>
+      <p>GitHub: <a href="https://github.com/pranay2503" target="_blank">pranay2503</a></p>
+    </section>
+
+    <!-- About / Resume Section -->
+    <section id="about" class="mb-5">
+      <h2>About Me</h2>
+      <p>I’m pursuing an MSc in Cybersecurity at the University of Dayton. My interests include web security, ethical hacking, and real-time data solutions.</p>
+      <ul>
+        <li><strong>Education:</strong> B.Tech in Computer Science, XYZ University</li>
+        <li><strong>Skills:</strong> HTML5, CSS3, JavaScript, jQuery, PHP, MySQL, Git</li>
+        <li><strong>Experience:</strong> Interned at ABC Corp (Web Security)</li>
+      </ul>
+    </section>
+
+    <!-- Clocks Section -->
+    <section id="clocks" class="mb-5">
+      <h2>Clocks</h2>
+      <div class="mb-3">
+        <strong>Digital:</strong> <span id="digital-clock"></span>
+      </div>
+      <canvas id="analog-clock" width="150" height="150"></canvas>
+    </section>
+
+    <!-- Today’s Date (Moment.js example) -->
+    <div id="today" class="mb-5"></div>
+
+    <!-- Joke Section -->
+    <section id="jokes" class="mb-5">
+      <h2>Joke of the Minute</h2>
+      <p id="joke-text">Loading joke…</p>
+    </section>
+
+    <!-- XKCD Comic Section -->
+    <section id="comic" class="mb-5">
+      <h2>Random XKCD</h2>
+      <div id="comic-container">Loading…</div>
+    </section>
+
+  </main>
+
+  <!-- Footer / Analytics -->
+  <footer class="text-center py-4">
+    <!-- Google Analytics snippet (replace UA-XXXXXX-X) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-XXXXXX-X');
+    </script>
+    <!-- Or Flagcounter alternative:
+    <a href="https://flagcounter.com/"><img src="https://s11.flagcounter.com/count2/…/flagcounter.css" alt="Flag Counter"></a>
+    -->
+  </footer>
+
+  <!-- JavaScript Libraries -->
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-…"
+    crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/min/moment.min.js"></script>
+
+  <!-- Your custom JS -->
+  <script src="assets/js/main.js" defer></script>
+  
+  <!-- Optional Bootstrap JS (for responsive nav) -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-…"
+    crossorigin="anonymous">
+  </script>
 </body>
 </html>
+
