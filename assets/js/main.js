@@ -23,7 +23,7 @@ $(document).ready(function() {
     e.preventDefault();
     $('html, body').animate({
       scrollTop: 0
-    }, 1500, 'easeInOutExpo');
+    }, 400, 'swing'); // Faster scroll (was 1500)
     return false;
   });
 
@@ -50,7 +50,7 @@ $(document).ready(function() {
       e.preventDefault();
       $('html, body').stop().animate({
         scrollTop: target.offset().top - 60 // Adjust for fixed header
-      }, 800, 'swing');
+      }, 400, 'swing'); // Faster scroll (was 800)
       $('.nav-link.scrollto').removeClass('active');
       $(this).addClass('active');
     }
@@ -69,7 +69,7 @@ $(document).ready(function() {
       e.preventDefault();
       $('html, body').animate({
         scrollTop: target.offset().top - 60 // Adjust offset for fixed header
-      }, 800, 'swing');
+      }, 400, 'swing'); // Faster scroll (was 800)
       // Optionally update active class
       $('.navbar .active').removeClass('active');
       $(this).closest('li').addClass('active');
