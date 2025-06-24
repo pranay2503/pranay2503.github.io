@@ -72,7 +72,11 @@
                     <div class="col-sm-6 col-md-7">
                       <div class="about-info">
                         <p><span class="title-s">Name: </span> <span>Sai Pranay Gundu</span></p>
-                        <p><span class="title-s">Email: </span> <span id="email">gundus1@udayton.edu</span></p>
+                        <p>
+                          <span class="title-s">Email: </span>
+                          <span id="email" style="user-select: none;">gundus1@udayton.edu</span>
+                          <button id="toggle-email" type="button" class="btn btn-sm btn-outline-secondary ms-2" aria-pressed="false" aria-label="Show or hide email">Hide</button>
+                        </p>
                         <p><span class="title-s">Profile: </span> <span>MSc Cybersecurity Student</span></p>
                       </div>
                     </div>
@@ -244,5 +248,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    // Show/hide email functionality
+    $(function() {
+      var $email = $('#email');
+      var $toggle = $('#toggle-email');
+      var emailValue = $email.text();
+      var hidden = false;
+      $toggle.on('click', function() {
+        if (!hidden) {
+          $email.text('••••••••••••••••••••••');
+          $toggle.text('Show');
+          $toggle.attr('aria-pressed', 'true');
+          hidden = true;
+        } else {
+          $email.text(emailValue);
+          $toggle.text('Hide');
+          $toggle.attr('aria-pressed', 'false');
+          hidden = false;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
