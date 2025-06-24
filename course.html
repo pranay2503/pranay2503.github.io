@@ -14,12 +14,223 @@
   </script>
 
   <link href="https://getbootstrap.com/docs/5.0/assets/img/favicons/favicon.ico" rel="icon">
-
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0078ff;
+      --secondary-color: #0d47a1;
+      --accent-color: #f5f5f5;
+      --text-color: #4e4e4e;
+      --background-color: #ffffff;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text-color);
+      background-color: var(--background-color);
+    }
+    .fixed-top {
+      position: fixed !important;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1030;
+    }
+    #header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+      transition: all 0.3s ease;
+    }
+    .logo a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 24px;
+    }
+    .navbar ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      align-items: center;
+    }
+    .navbar li {
+      position: relative;
+      margin-left: 30px;
+    }
+    .navbar a {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .navbar a:hover, .navbar .active {
+      color: var(--primary-color);
+    }
+    .mobile-nav-toggle {
+      display: none;
+      color: var(--primary-color);
+      font-size: 28px;
+      cursor: pointer;
+    }
+    .breadcrumbs {
+      background: var(--accent-color);
+      padding: 30px 0 20px 0;
+      margin-top: 70px;
+      border-bottom: 1px solid #e4e4e4;
+    }
+    .breadcrumbs h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    .breadcrumbs ol {
+      margin-bottom: 0;
+      background: none;
+      padding: 0;
+      font-size: 16px;
+    }
+    .breadcrumbs ol li {
+      display: inline;
+      color: var(--secondary-color);
+    }
+    .breadcrumbs ol li+li:before {
+      content: " / ";
+      color: #888;
+    }
+    .box-shadow-full {
+      padding: 3rem 1.25rem;
+      position: relative;
+      background-color: #fff;
+      margin-bottom: 3rem;
+      border: 1px solid #e4e4e4;
+      border-radius: 10px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    .box-shadow-full.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .title-box-d h3 {
+      color: var(--primary-color);
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .property-summary p.lead {
+      font-size: 18px;
+      color: var(--text-color);
+    }
+    .property-summary ul.list-a {
+      padding-left: 20px;
+      margin-bottom: 0;
+    }
+    .property-summary ul.list-a li {
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: var(--secondary-color);
+      font-weight: 500;
+    }
+    .copyright-box {
+      background-color: #f8f9fa;
+      padding: 30px 0;
+      text-align: center;
+      border-top: 1px solid #e4e4e4;
+    }
+    .credits {
+      margin-top: 15px;
+      color: #999;
+    }
+    .credits a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      z-index: 1000;
+    }
+    .back-to-top i {
+      font-size: 20px;
+    }
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9999;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #preloader:before {
+      content: "";
+      width: 30px;
+      height: 30px;
+      border: 3px solid var(--primary-color);
+      border-top: 3px solid transparent;
+      border-radius: 50%;
+      animation: animate-preloader 1s linear infinite;
+    }
+    @keyframes animate-preloader {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    /* Welcome banner styles */
+    #welcome-banner {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 600;
+      box-shadow: 0 5px 15px rgba(0, 120, 255, 0.3);
+      animation: pulse 2s infinite;
+      margin-bottom: 30px;
+      margin-top: 30px;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    @media (max-width: 768px) {
+      .mobile-nav-toggle {
+        display: block;
+      }
+      .navbar ul {
+        display: none;
+      }
+      .breadcrumbs h2 {
+        font-size: 24px;
+      }
+      .title-box-d h3 {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -43,7 +254,7 @@
   </header>
 
   <main id="main">
-
+    <div id="welcome-banner">Welcome to the WAPH Course Page!</div>
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
@@ -54,44 +265,49 @@
           </ol>
         </div>
       </div>
-    </section><section class="section-property single-property">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="box-shadow-full">
-                        <div class="title-box-d">
-                            <h3 class="title-d">About The WAPH Course</h3>
-                        </div>
-                        <div class="property-summary">
-                            <p class="lead">
-                                This page is part of a project for the Web Application Programming and Hacking (WAPH) course. The portfolio showcases skills in HTML, CSS, and JavaScript, with a focus on creating dynamic, interactive, and secure web content.
-                            </p>
-                            <p>
-                                The interactive elements on this site, such as the live clocks, dynamic joke loader, and the random XKCD comic, are implemented using JavaScript to fetch and display real-time data from external APIs.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="box-shadow-full">
-                        <div class="title-box-d">
-                            <h3 class="title-d">Dynamic Content</h3>
-                        </div>
-                        <div class="property-summary">
-                            <ul class="list-a">
-                                <li>Live Digital & Analog Clocks</li>
-                                <li>Joke of the Minute (from API)</li>
-                                <li>Random XKCD Comic (from API)</li>
-                                <li>Cookie-based Welcome Greeting</li>
-                                <li>Secure and Accessible Design</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
-
+    <section class="section-property single-property">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="box-shadow-full">
+              <div class="title-box-d">
+                <h3 class="title-d">About The WAPH Course</h3>
+              </div>
+              <div class="property-summary">
+                <p class="lead">
+                  This page is part of a project for the Web Application Programming and Hacking (WAPH) course. The portfolio showcases skills in HTML, CSS, and JavaScript, with a focus on creating dynamic, interactive, and secure web content.
+                </p>
+                <p>
+                  The interactive elements on this site, such as the live clocks, dynamic joke loader, and the random XKCD comic, are implemented using JavaScript to fetch and display real-time data from external APIs.
+                </p>
+                <p>
+                  <strong>Course Instructor:</strong> Dr. Wenbing Zhao<br>
+                  <strong>Semester:</strong> Spring 2024<br>
+                  <strong>Institution:</strong> University of Dayton
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="box-shadow-full">
+              <div class="title-box-d">
+                <h3 class="title-d">Dynamic Content</h3>
+              </div>
+              <div class="property-summary">
+                <ul class="list-a">
+                  <li>Live Digital & Analog Clocks</li>
+                  <li>Joke of the Minute (from API)</li>
+                  <li>Random XKCD Comic (from API)</li>
+                  <li>Cookie-based Welcome Greeting</li>
+                  <li>Secure and Accessible Design</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -114,8 +330,74 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"></script>
-
   <script src="assets/js/main.js"></script>
+  <script>
+    // Preloader
+    $(document).ready(function() {
+      $('#preloader').fadeOut(500);
+    });
 
+    // Welcome banner greeting based on time
+    function updateWelcomeBanner() {
+      const now = new Date();
+      const hour = now.getHours();
+      let greeting;
+      if (hour < 12) {
+        greeting = 'Good Morning! Welcome to the WAPH Course Page!';
+      } else if (hour < 17) {
+        greeting = 'Good Afternoon! Welcome to the WAPH Course Page!';
+      } else {
+        greeting = 'Good Evening! Welcome to the WAPH Course Page!';
+      }
+      document.getElementById('welcome-banner').textContent = greeting;
+    }
+    $(document).ready(function() {
+      updateWelcomeBanner();
+    });
+
+    // Reveal animation for .box-shadow-full
+    function revealOnScroll() {
+      $('.box-shadow-full').each(function() {
+        const windowHeight = window.innerHeight;
+        const elementTop = this.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+          $(this).addClass('visible');
+        }
+      });
+    }
+    $(document).ready(function() {
+      revealOnScroll();
+      window.addEventListener('scroll', revealOnScroll);
+    });
+
+    // Enhanced mobile navigation
+    $('.mobile-nav-toggle').on('click', function() {
+      const navbar = $('.navbar ul');
+      navbar.slideToggle(300);
+      $(this).toggleClass('bi-list bi-x');
+    });
+    // Close mobile menu when clicking on a link
+    $('.navbar a').on('click', function() {
+      if ($(window).width() <= 768) {
+        $('.navbar ul').slideUp(300);
+        $('.mobile-nav-toggle').removeClass('bi-x').addClass('bi-list');
+      }
+    });
+
+    // Back to top functionality
+    $('.back-to-top').click(function(e) {
+      e.preventDefault();
+      $('html, body').animate({scrollTop: 0}, 800);
+    });
+    // Show/hide back to top button
+    $(window).scroll(function() {
+      if ($(window).scrollTop() > 100) {
+        $('.back-to-top').fadeIn();
+      } else {
+        $('.back-to-top').fadeOut();
+      }
+    });
+  </script>
 </body>
 </html>
