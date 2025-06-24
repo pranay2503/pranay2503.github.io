@@ -47,7 +47,7 @@
           <div id="welcome-banner" class="mb-3">Welcome to my portfolio!</div>
           <h1 class="hero-title mb-4">I am Sai Pranay Gundu</h1>
           <p class="hero-subtitle">
-            <span class="typed" data-typed-items="Cybersecurity Student, Web Developer, Ethical Hacker"></span>
+            <span class="typed" data-typed-items="computer science Student, Web Developer, Ethical Hacker"></span>
           </p>
         </div>
       </div>
@@ -107,60 +107,111 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
-            <div class="title-box text-center"><h3 class="title-a">Portfolio</h3><p class="subtitle-a">Dynamic content loaded via JavaScript.</p><div class="line-a"></div></div>
+            <div class="title-box text-center">
+              <h3 class="title-a">Portfolio</h3>
+              <p class="subtitle-a">A showcase of my interactive and technical web projects.</p>
+              <div class="line-a"></div>
+            </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row g-4">
+          <!-- Project 1: Live Clocks -->
           <div class="col-md-4">
-            <div class="work-box">
-              <div class="work-content"><h2 class="w-title">Live Clocks</h2>
-                <div class="w-more">
-                    <strong>Digital:</strong> <span id="digital-clock"></span><br>
-                    <canvas id="analog-clock" width="150" height="150"></canvas>
+            <div class="card h-100 shadow-sm border-0">
+              <div class="card-body text-center">
+                <div class="mb-3">
+                  <i class="bi bi-clock-history display-4 text-primary"></i>
+                </div>
+                <h5 class="card-title">Live Clocks</h5>
+                <p class="card-text">Displays both a digital and analog clock, updating in real time using JavaScript.</p>
+                <div>
+                  <strong>Digital:</strong> <span id="digital-clock"></span><br>
+                  <canvas id="analog-clock" width="150" height="150"></canvas>
                 </div>
               </div>
             </div>
           </div>
+          <!-- Project 2: Joke of the Minute -->
           <div class="col-md-4">
-            <div class="work-box">
-              <div class="work-content"><h2 class="w-title">Joke of the Minute</h2>
-                <div class="w-more" id="joke-text">Loading joke…</div>
+            <div class="card h-100 shadow-sm border-0">
+              <div class="card-body text-center">
+                <div class="mb-3">
+                  <i class="bi bi-emoji-laughing display-4 text-warning"></i>
+                </div>
+                <h5 class="card-title">Joke of the Minute</h5>
+                <p class="card-text">Fetches a new programming or pun joke every minute from a public API.</p>
+                <div id="joke-text">Loading joke…</div>
               </div>
             </div>
           </div>
+          <!-- Project 3: Random XKCD -->
           <div class="col-md-4">
-            <div class="work-box">
-              <div class="work-content"><h2 class="w-title">Random XKCD</h2>
-                <div class="w-more" id="comic-container">Loading…</div>
+            <div class="card h-100 shadow-sm border-0">
+              <div class="card-body text-center">
+                <div class="mb-3">
+                  <i class="bi bi-image display-4 text-success"></i>
+                </div>
+                <h5 class="card-title">Random XKCD</h5>
+                <p class="card-text">Shows a random XKCD comic using a CORS proxy and JavaScript fetch.</p>
+                <div id="comic-container">Loading…</div>
               </div>
             </div>
           </div>
         </div>
+        <!-- Add more projects below as needed -->
+        <!--
+        <div class="row g-4 mt-2">
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+              <div class="card-body text-center">
+                <div class="mb-3">
+                  <i class="bi bi-code-slash display-4 text-info"></i>
+                </div>
+                <h5 class="card-title">Project Title</h5>
+                <p class="card-text">Short description of another project or skill.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        -->
       </div>
     </section>
 
-    <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2074&auto=format&fit=crop)">
-      <div class="overlay-mf"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="contact-mf">
-              <div class="box-shadow-full">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="title-box-2"><h5 class="title-left">Get in Touch</h5></div>
-                    <div>
-                      <ul class="list-ico">
-                        <li><span class="bi bi-geo-alt"></span> Dayton, Ohio</li>
-                        <li><span class="bi bi-envelope"></span> gundus1@udayton.edu</li>
-                      </ul>
-                    </div>
-                    <div class="socials">
-                      <ul>
-                        <li><a href="https://github.com/pranay2503" target="_blank"><span class="ico-circle"><i class="bi bi-github"></i></span></a></li>
-                        <li><a href="https://linkedin.com/in/saipranaygundu" target="_blank"><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a></li>
-                      </ul>
-                    </div>
+    <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2074&auto=format&fit=crop); position: relative; z-index: 1;">
+      <div class="overlay-mf" style="opacity:0.5; z-index:1;"></div>
+      <div class="container" style="position:relative; z-index:2;">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="contact-mf p-4 bg-white rounded shadow" style="position:relative; z-index:3;">
+              <div class="text-center mb-4">
+                <h5 class="title-left mb-1">Get in Touch</h5>
+                <p class="text-muted mb-0">Feel free to reach out for collaborations or just a friendly hello!</p>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-md-5 text-center mb-3 mb-md-0">
+                  <img src="headshot.jpg" class="img-fluid rounded-circle border shadow" alt="Sai Pranay Gundu" style="width:120px;height:120px;object-fit:cover;">
+                  <h6 class="mt-3 mb-0">Sai Pranay Gundu</h6>
+                  <span class="text-muted small">MSc Cybersecurity Student</span>
+                </div>
+                <div class="col-md-7">
+                  <ul class="list-unstyled mb-3">
+                    <li class="mb-2">
+                      <i class="bi bi-geo-alt me-2 text-primary"></i>
+                      <span>Dayton, Ohio</span>
+                    </li>
+                    <li class="mb-2">
+                      <i class="bi bi-envelope me-2 text-primary"></i>
+                      <a href="mailto:gundus1@udayton.edu" class="text-decoration-none">gundus1@udayton.edu</a>
+                    </li>
+                  </ul>
+                  <div class="socials mt-3">
+                    <a href="https://github.com/pranay2503" target="_blank" class="btn btn-outline-dark btn-sm rounded-circle me-2" title="GitHub">
+                      <i class="bi bi-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/saipranaygundu" target="_blank" class="btn btn-outline-primary btn-sm rounded-circle" title="LinkedIn">
+                      <i class="bi bi-linkedin"></i>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -193,26 +244,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"></script>
   <script src="assets/js/main.js"></script>
-  <script>
-    // Fix smooth scrolling for navigation links (header)
-    $(function() {
-      $('.nav-link.scrollto').on('click', function(e) {
-        var hash = this.hash;
-        var target = $(hash);
-        if (target.length) {
-          e.preventDefault();
-          $('html, body').animate({
-            scrollTop: target.offset().top - 70
-          }, 800);
-          $('.nav-link.scrollto').removeClass('active');
-          $(this).addClass('active');
-          if ($(window).width() <= 768) {
-            $('.navbar ul').slideUp(300);
-            $('.mobile-nav-toggle').removeClass('bi-x').addClass('bi-list');
-          }
-        }
-      });
-    });
-  </script>
 </body>
 </html>

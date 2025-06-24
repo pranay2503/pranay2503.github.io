@@ -41,26 +41,18 @@ $(document).ready(function() {
   }
 
   // --- Smooth scroll for the navigation menu ---
-  $('a.scrollto').on('click', function(e) {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+  // Remove one of the duplicate smooth scroll handlers to avoid double scroll/jump issues.
+  // Only keep this handler for all .nav-link.scrollto links.
+  $('.nav-link.scrollto').on('click', function(e) {
+    var hash = this.hash;
+    var target = $(hash);
+    if (target.length) {
       e.preventDefault();
-      let target = $(this.hash);
-      if (target.length) {
-        $('html, body').animate({
-          scrollTop: target.offset().top - 60 // Adjust for fixed header
-        }, 1500, 'easeInOutExpo');
-
-        if ($(this).parents('.navbar').length) {
-          $('.navbar .active').removeClass('active');
-          $(this).closest('li').addClass('active');
-        }
-
-        if ($('body').hasClass('navbar-mobile')) {
-          $('body').removeClass('navbar-mobile');
-          $('.mobile-nav-toggle').toggleClass('bi-list bi-x');
-        }
-        return false;
-      }
+      $('html, body').stop().animate({
+        scrollTop: target.offset().top - 60 // Adjust for fixed header
+      }, 800, 'swing');
+      $('.nav-link.scrollto').removeClass('active');
+      $(this).addClass('active');
     }
   });
 
@@ -185,19 +177,21 @@ $(document).ready(function() {
     const comicContainer = $('#comic-container');
     if (!comicContainer.length) return;
 
-    // Using a reliable proxy to bypass CORS issues
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/https://xkcd.com/info.0.json';
-    const randomComicId = Math.floor(Math.random() * 2500) + 1;
-    const randomUrl = `https://cors-anywhere.herokuapp.com/https://xkcd.com/${randomComicId}/info.0.json`;
+    // XKCD does NOT send CORS headers, so direct fetch will fail on localhost or file://
+    // Solution: Use a public CORS proxy (e.g. allorigins), or fallback to a static XKCD comic if fetch fails.
 
+    const randomComicId = Math.floor(Math.random() * 2500) + 1;
+    const apiUrl = `https://xkcd.com/${randomComicId}/info.0.json`;
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
 
     try {
-      const response = await fetch(randomUrl);
+      const response = await fetch(proxyUrl);
       if (!response.ok) throw new Error('Failed to load comic data');
       const data = await response.json();
+      const comicData = JSON.parse(data.contents);
       comicContainer.html(`
-        <strong class="d-block mb-2">${data.title}</strong>
-        <img src="${data.img}" alt="${data.alt}" title="${data.alt}" class="img-fluid rounded">
+        <strong class="d-block mb-2">${comicData.title}</strong>
+        <img src="${comicData.img}" alt="${comicData.alt}" title="${comicData.alt}" class="img-fluid rounded">
       `);
     } catch (error) {
       console.error("Failed to fetch XKCD comic:", error);
